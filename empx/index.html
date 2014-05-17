@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<style type="text/css">
+  .tables{
+    display:inline-block;
+    margin: 20px;
+  }
+  table.tr,td,th{
+    border:1px solid;
+    padding:10px;
+  }
+</style>
+
+<div ng-app>
+  <h2>EM PX Table</h2>
+  <div ng-controller="EmTable" ng-init="values()">
+      <div>
+      <label for="">From</label>
+      <input type="text" ng-model="from" name="from"  ng-change="values()">
+      <label for="">To</label>
+      <input type="text" ng-model="to" ng-change="values()" name="to" >
+          
+      </div>
+      <div ng-repeat="table in tables" class="tables">
+          <h3>{{table.base}}</h3>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Ems</th>
+                      <th>Pxs</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="value in table.values">
+                      <td>{{value[0]}}</td>
+                      <td>{{value[1]}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
